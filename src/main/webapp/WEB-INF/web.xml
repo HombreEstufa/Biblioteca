@@ -9,4 +9,34 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>BibliotecaController</display-name>
+    <servlet-name>BibliotecaController</servlet-name>
+    <servlet-class>controlador.BibliotecaController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BibliotecaController</servlet-name>
+    <url-pattern>/BibliotecaController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BibliotecaControlador</display-name>
+    <servlet-name>BibliotecaControlador</servlet-name>
+    <servlet-class>controlador.BibliotecaControlador</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BibliotecaControlador</servlet-name>
+    <url-pattern>/BibliotecaControlador</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BibliotecaControlador1</display-name>
+    <servlet-name>BibliotecaControlador1</servlet-name>
+    <servlet-class>controlador.BibliotecaControlador1</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BibliotecaControlador1</servlet-name>
+    <url-pattern>/BibliotecaControlador1</url-pattern>
+  </servlet-mapping>
 </web-app>
