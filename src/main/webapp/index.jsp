@@ -13,6 +13,10 @@
 </head>
 <body>
 	<h1>Inserta un Libro</h1>
+	    <% String info = (String)request.getAttribute("info");
+    	if (info != null) { %>
+    		<p><%=info%></p>
+    <%}%>
 	<% String error = (String)request.getAttribute("error");
 	if (error != null) { %>
 		<p> <%=error%></p>
@@ -23,10 +27,6 @@
         <th><b>Título</b></th>
         <th><b>Autor</b></th>
     </tr>
-    <% String info = (String)request.getAttribute("info");
-    	if (info != null) { %>
-    		<p><%=info%></p>
-    <%}%>
     
     <% ArrayList<Libro> libros = (ArrayList<Libro>)request.getAttribute("libros");
          if (libros != null) {
@@ -40,7 +40,7 @@
 </table><br>
 
     <div>
-        <form action="insertar" method="psot">
+        <form action="insertar" method="post">
             <label for="isbn">ISBN: </label>
             <input type="text" name="isbn" id="isbn" placeholder="ISBN..."><br>
 
