@@ -13,9 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Servlet implementation class BibliotecaControlador1
+ * Servlet implementation class BibliotecaController
  */
-@WebServlet(urlPatterns = {"","/insertar"})
+@WebServlet(urlPatterns ={"","/insertar"})
 public class BibliotecaControlador1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -31,16 +31,17 @@ public class BibliotecaControlador1 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		System.out.println("Servlet BibliotecaController");
 		RequestDispatcher despachador = null;
 		if (request.getServletPath().equals("")) {
 			try {
 				LibroDAO libroDAO = new LibroDAO();
-				ArrayList<Libro> libros;
-				libros = libroDAO.getLibros();
+				ArrayList<Libro> libros = new ArrayList<Libro>(libroDAO.getLibros());
 				request.setAttribute("libros", libros);
-			} catch(RuntimeException e) {
-				request.setAttribute("error", e.getMessage());
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("error",e.getMessage());
 			}
 			despachador = request.getServletContext().getRequestDispatcher("/index.jsp");
 		} else if (request.getServletPath().equals("/insertar")) {
@@ -48,12 +49,14 @@ public class BibliotecaControlador1 extends HttpServlet {
 				LibroDAO libroDAO = new LibroDAO();
 				Libro libro = new Libro(Integer.parseInt(request.getParameter("isbn")),
 						request.getParameter("titulo"),request.getParameter("autor"));
-				request.setAttribute("info", "Libro " + libro + " añadido");
 				libroDAO.insertar(libro);
-			} catch(NumberFormatException e) {
-				request.setAttribute("error", e.getMessage());
-			} catch(RuntimeException e) {
-				request.setAttribute("error", e.getMessage());
+				request.setAttribute("info", "Libro "+ libro +" añadido");
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("error",e.getMessage());
+			} catch (RuntimeException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("error",e.getMessage());
 			}
 			despachador = request.getServletContext().getRequestDispatcher("/");
 		}
